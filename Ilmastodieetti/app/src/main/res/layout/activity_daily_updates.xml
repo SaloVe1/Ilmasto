@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DailyUpdates">
+
+    <TextView
+        android:id="@+id/messageboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add your daily activities and Morning Weight"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.087" />
+
+    <Button
+        android:id="@+id/sumpit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="ExecuteWeightracker"
+        android:text="SUBMIT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.746" />
+
+    <TextView
+        android:id="@+id/Resultfield"
+        android:layout_width="263dp"
+        android:layout_height="140dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972" />
+
+    <ScrollView
+        android:id="@+id/Questionairefield"
+        android:background="#00FFFFFF"
+        android:layout_width="367dp"
+        android:layout_height="359dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="50dp" />
+            <View
+                android:layout_height="5dp"
+                android:layout_width="wrap_content"
+                android:background="@color/design_default_color_primary_dark"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/Running"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Running" />
+
+            <Space
+                android:layout_width="1dp"
+                android:layout_height="50dp" />
+
+            <Spinner
+                android:id="@+id/Runninghours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                android:id="@+id/Runningtexthours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hours" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <Spinner
+                android:id="@+id/Runningminutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <TextView
+                android:id="@+id/Runningtextminutes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="minutes" />
+        </LinearLayout>
+
+            <View
+                android:layout_height="5dp"
+                android:layout_width="wrap_content"
+                android:background="@color/design_default_color_primary_dark"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Cycling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cycling" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <Spinner
+                    android:id="@+id/Cyclinghours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/Cyclingtexthours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hours" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <Spinner
+                    android:id="@+id/Cyclingminutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <TextView
+                    android:id="@+id/Cyclingtextminutes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="minutes" />
+            </LinearLayout>     <View
+            android:layout_height="5dp"
+            android:layout_width="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Walking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Walking" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <Spinner
+                    android:id="@+id/Walkinghours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <TextView
+                    android:id="@+id/Walkingtexthours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hours" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <Spinner
+                    android:id="@+id/Walkingminutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <TextView
+                    android:id="@+id/Walkingtextminutes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="minutes" />
+            </LinearLayout>     <View
+            android:layout_height="5dp"
+            android:layout_width="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Gym"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gym" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <Spinner
+                    android:id="@+id/Gymhours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <TextView
+                    android:id="@+id/Gymtexthours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hours" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <Spinner
+                    android:id="@+id/Gymminutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <TextView
+                    android:id="@+id/Gymtextminutes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="minutes" />
+            </LinearLayout>     <View
+            android:layout_height="5dp"
+            android:layout_width="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Joga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Joga(intense)" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <Spinner
+                    android:id="@+id/Jogahours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/Jogatexthours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hours" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+                <Spinner
+                    android:id="@+id/Jogaminutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/Jogatextminutes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="minutes" />
+            </LinearLayout>     <View
+            android:layout_height="5dp"
+            android:layout_width="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/Moriningweight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="What was your morning weight?" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+                <Spinner
+                    android:id="@+id/Morningweightspinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="50dp" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
