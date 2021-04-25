@@ -68,9 +68,13 @@ public class profilecreate extends AppCompatActivity {
         bank.FillCityArray();
 
 
+
+        //City array is fetched from THL data with Cittyarray method in userbank class
+
         ArrayAdapter<String> City = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,bank.Cityarray());
         City.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         CityS.setAdapter(City);
+
 
         ArrayAdapter<String> Gender = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,bank.Genders());
         Gender.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -117,39 +121,60 @@ public class profilecreate extends AppCompatActivity {
         });
 
 
+        //The following functions use logical argumets to test user inputs.
+
+
         ProfileUsername.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
+
+
+            //Test if method wordcount is larger than 4 and smaller than 10 and wether or not the profilename already exists
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(valueTests.WordCount(ProfileUsername.getText().toString())>4 && valueTests.WordCount(ProfileUsername.getText().toString())<10 && !ProfileUsername.getText().toString().equals("Username")){
-                    usernamealert.setTextColor(Color.GREEN);
-                    usernamealert.setText("OK!");
-                }
-                else{
+                if(bank.Findprofiletruefalse(ProfileUsername.getText().toString())==true){
                     usernamealert.setTextColor(Color.RED);
-                    usernamealert.setText("In min 4 characters, at max 10 characters");
+                    usernamealert.setText("Profile name is taken");
+                }else{
+                    if(valueTests.WordCount(ProfileUsername.getText().toString())>4 && valueTests.WordCount(ProfileUsername.getText().toString())<11 && !ProfileUsername.getText().toString().equals("Username")){
+                        usernamealert.setTextColor(Color.GREEN);
+                        usernamealert.setText("OK!");
+                    }
+                    else{
+                        usernamealert.setTextColor(Color.RED);
+                        usernamealert.setText("In min 4 characters, at max 10 characters");
+                    }
 
                 }
 
 
             }
 
+            //Test if method wordcount is larger than 4 and smaller than 10 and wether or not the profilename already exists
+
             @Override
             public void afterTextChanged(Editable s) {
-                if(valueTests.WordCount(ProfileUsername.getText().toString())>4 && valueTests.WordCount(ProfileUsername.getText().toString())<10 && !ProfileUsername.getText().toString().equals("Username")) {
-                    usernamealert.setTextColor(Color.GREEN);
-                    usernamealert.setText("OK!");
-                }
-                else{
+
+                if(bank.Findprofiletruefalse(ProfileUsername.getText().toString())==true){
                     usernamealert.setTextColor(Color.RED);
-                    usernamealert.setText("In min 4 characters, at max 10 characters");
+                    usernamealert.setText("Profile name is taken");
+                }else{
+                    if(valueTests.WordCount(ProfileUsername.getText().toString())>4 && valueTests.WordCount(ProfileUsername.getText().toString())<11 && !ProfileUsername.getText().toString().equals("Username")){
+                        usernamealert.setTextColor(Color.GREEN);
+                        usernamealert.setText("OK!");
+                    }
+                    else{
+                        usernamealert.setTextColor(Color.RED);
+                        usernamealert.setText("In min 4 characters, at max 10 characters");
+                    }
 
                 }
+
 
             }
         });
@@ -158,10 +183,15 @@ public class profilecreate extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
+
+
+            //Test if input value is number, if input value is bigger than 12 and smaller than 120
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            if(valueTests.NumeroTesti(ProfileAge.getText().toString())==true && Integer.parseInt(ProfileAge.getText().toString())>12 && Integer.parseInt(ProfileAge.getText().toString())<120){
+            if(valueTests.NumeroTesti(ProfileAge.getText().toString())==true && Integer.parseInt(ProfileAge.getText().toString())>11 && Integer.parseInt(ProfileAge.getText().toString())<121){
                 agealert.setTextColor(Color.GREEN);
                 agealert.setText("OK!");
             }else{
@@ -169,6 +199,10 @@ public class profilecreate extends AppCompatActivity {
                 agealert.setText("Number value between 12-120!");
             }
             }
+
+
+            //Test if input value is number, if input value is bigger than 12 and smaller than 120
+
             @Override
             public void afterTextChanged(Editable s) {
                 if(valueTests.NumeroTesti(ProfileAge.getText().toString())==true && Integer.parseInt(ProfileAge.getText().toString())>12 && Integer.parseInt(ProfileAge.getText().toString())<120){
@@ -188,6 +222,8 @@ public class profilecreate extends AppCompatActivity {
 
             }
 
+            //Test if input value is number, if input value is smaller than 240
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(valueTests.NumeroTesti(ProfileHeight.getText().toString())==true && Integer.parseInt(ProfileHeight.getText().toString())>100 && Integer.parseInt(ProfileHeight.getText().toString())<260){
@@ -199,6 +235,8 @@ public class profilecreate extends AppCompatActivity {
                 }
 
             }
+
+            //Test if input value is number, if input value is smaller than 240
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -222,26 +260,39 @@ public class profilecreate extends AppCompatActivity {
 
             }
 
+
+            //Test if password has 1 number characters and 1 special character and is at least 8 characters long
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if(valueTests.NumberAmount(ProfilePassword.getText().toString())>=4 && valueTests.HasSpaces(ProfilePassword.getText().toString())==false && valueTests.WordCount(ProfilePassword.getText().toString())>7){
+                if(valueTests.NumberAmount(ProfilePassword.getText().toString())>=4 &&
+                        valueTests.HasSpaces(ProfilePassword.getText().toString())==false &&
+                        valueTests.WordCount(ProfilePassword.getText().toString())>11 &&
+                        valueTests.SpecialCharacter(ProfilePassword.getText().toString())==true &&
+                        valueTests.UpperAndLower(ProfilePassword.getText().toString())==true){
                 passwordalert.setTextColor(Color.GREEN);
                 passwordalert.setText("OK!");
                 }else{
                     passwordalert.setTextColor(Color.RED);
-                    passwordalert.setText("at least 3 numbers, no spaces, at least 8 characters");
+                    passwordalert.setText("1 number, 1 special character, 12 characters total," + "\n" + "one lower and uppercase letter");
                 }
             }
 
+            //Test if password has 1 number characters and 1 special character and is at least 8 characters long
+
             @Override
             public void afterTextChanged(Editable s) {
-                if(valueTests.NumberAmount(ProfilePassword.getText().toString())>=4 && valueTests.HasSpaces(ProfilePassword.getText().toString())==false && valueTests.WordCount(ProfilePassword.getText().toString())>7){
+                if(valueTests.NumberAmount(ProfilePassword.getText().toString())>=2 &&
+                        valueTests.HasSpaces(ProfilePassword.getText().toString())==false &&
+                        valueTests.WordCount(ProfilePassword.getText().toString())>11 &&
+                        valueTests.SpecialCharacter(ProfilePassword.getText().toString())==true&&
+                        valueTests.UpperAndLower(ProfilePassword.getText().toString())==true){
                     passwordalert.setTextColor(Color.GREEN);
                     passwordalert.setText("OK!");
                 }else{
                     passwordalert.setTextColor(Color.RED);
-                    passwordalert.setText("at least 3 numbers, no spaces, at least 8 characters");
+                    passwordalert.setText("1 number, 1 special character, 12 characters total," + "\n" + "one lower and uppercase letter");
                 }
 
             }
@@ -250,6 +301,9 @@ public class profilecreate extends AppCompatActivity {
 
 
     }
+
+
+    //Checks that the valuetests were passed and creates a new userprofile object
 
     public void NewUserEntry(View v){
 

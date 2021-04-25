@@ -1,5 +1,7 @@
 package com.example.ilmastodieetti;
 
+//Class is used to store username and currently latest chosen testnumber
+
 public class CurrentUser {
 
     private static CurrentUser instance = new CurrentUser();

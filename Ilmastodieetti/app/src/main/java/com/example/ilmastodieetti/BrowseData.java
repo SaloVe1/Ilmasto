@@ -34,7 +34,6 @@ public class BrowseData extends AppCompatActivity {
     private final ArrayList<String>category = new ArrayList<String>();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +60,8 @@ public class BrowseData extends AppCompatActivity {
         category.add("Weight progression");
 
 
+        //Spinner are adapted with predetermined arrays. Arrays are fetched by current username. Method title's self explanatory.
+
         ArrayAdapter<String> cateGory = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,category);
         cateGory.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         CateGorySpinner.setAdapter(cateGory);
@@ -81,6 +82,9 @@ public class BrowseData extends AppCompatActivity {
 
 
         CateGorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+            //Selects what values will be presented in spinners by categoryspinner data
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -111,7 +115,7 @@ public class BrowseData extends AppCompatActivity {
             }
         });
 
-
+        //Listens to take or time selection and automatically changes the other spinner value to correspond with the other
 
         TakeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -154,6 +158,8 @@ public class BrowseData extends AppCompatActivity {
             }
         });
 
+        //Same as previous
+
         TestSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -194,6 +200,8 @@ public class BrowseData extends AppCompatActivity {
 
 
     }
+
+    //Changes fragmment depending on what is selected in the category spinner
 
     public void goToFragment(View v){
 

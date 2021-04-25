@@ -3,6 +3,7 @@ package com.example.ilmastodieetti;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -69,6 +70,8 @@ public class DailyUpdates extends AppCompatActivity {
         sumbit = (Button) findViewById(R.id.sumpit);
 
 
+        //Spinners are filled with Integers arrays done with a generic method
+
         ArrayAdapter<Integer> Hours = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1,tester.AbstractArray(5,0));
         Hours.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -98,7 +101,11 @@ public class DailyUpdates extends AppCompatActivity {
 
     }
 
+
+    //First declaring input values from spinners, then putting them to calorieconsumption method in singleton "testbank", printing result on screen
+
     public void ExecuteWeightracker(View v){
+
 
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -131,6 +138,17 @@ public class DailyUpdates extends AppCompatActivity {
 
 
     }
+
+    public void GoToMain(View v){
+
+        Intent intent = new Intent(DailyUpdates.this,MainActivity.class);
+
+
+        startActivity(intent);
+
+
+    }
+
 
 
 

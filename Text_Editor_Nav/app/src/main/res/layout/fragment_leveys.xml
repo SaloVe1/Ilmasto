@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+
+    >
+
+    <TextView
+        android:id="@+id/fontwidth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Font width"
+        android:textSize="15sp" />
+    <SeekBar
+        android:layout_below="@id/fontwidth"
+        android:id="@+id/seekBar1"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="253dp"
+        android:layout_height="43dp"
+        android:max="2000"
+        android:progress="1000"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/leveysilmoitus"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar1"
+        android:layout_centerHorizontal="true"
+        android:text="leveys 1"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/muutaleveys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leveysilmoitus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:onClick="setTextWidth"
+        android:text="Muuta leveys" />
+
+
+</RelativeLayout>

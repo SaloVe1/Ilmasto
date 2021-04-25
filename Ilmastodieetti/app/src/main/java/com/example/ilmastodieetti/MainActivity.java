@@ -39,12 +39,15 @@ public class MainActivity extends AppCompatActivity {
         Logout = (Button) findViewById(R.id.Logout);
 
 
+        //Setting up the main welcoming text, fetching data from THL page with Smoking probability method in userbank class. Getting current user from CurrentUser class.
+
         welcome.setText("Welcome user " + current.getUsername() + ". According to THL database the probability of you being a tobacco smoker is "
                 + bank.SmokingPropability(current.getUsername()) + "%" + ". Be Smart and don't start smoking!");
 
+        // The userbank class has a method that initializes all city/area objects from THL page
+
         bank.FillCityArray();
 
-      //  bank.SmokingPropability(current.getUsername());
 
 
     }

@@ -1,5 +1,8 @@
 package com.example.ilmastodieetti;
 
+
+//Weight tracker class object collects attributes of one weight test.
+
 public class weighttracker {
 
     private String username;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/kirjoita"
+            android:icon="@drawable/kirjoita"
+            android:title="Salli/lopeta kirjoitus"/>
+        <item android:id="@+id/fonttikoko"
+            android:icon="@drawable/fontsize"
+            android:title="Fonttikoko"/>
+        <item android:id="@+id/leveys"
+            android:icon="@drawable/leveys"
+            android:title="leveys"/>
+        <item android:id="@+id/korkeus"
+            android:icon="@drawable/korkeus"
+            android:title="korkeus"/>
+        <item android:id="@+id/letterspacing"
+            android:icon="@drawable/rivivali"
+            android:title="letterspacing"/>
+        <item android:id="@+id/Displaytext"
+            android:title="Display Text"/>
+        <item android:id="@+id/Finnish"
+            android:title="finnish"/>
+        <item android:id="@+id/English"
+            android:title="english"/>
+    </group>
+
+</menu>

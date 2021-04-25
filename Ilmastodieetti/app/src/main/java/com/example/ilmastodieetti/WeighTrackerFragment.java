@@ -22,6 +22,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//This is the fragment class that displays the weight line-chart
+
 public class WeighTrackerFragment extends Fragment {
 
 
@@ -46,6 +49,9 @@ public class WeighTrackerFragment extends Fragment {
         chart = (LineChart) w.findViewById(R.id.Line);
         List<Entry> entries = new ArrayList<Entry>();
 
+
+        //Using current test number to draw the graph. The graph displays all test results below the current number in weighttracker arraylist.
+
         int j = Integer.parseInt(current.getCurrentestnumber());
         String[] weights = tester.WeightProgression(current.getUsername());
         for (int i=0; i < j; i++){
@@ -54,6 +60,9 @@ public class WeighTrackerFragment extends Fragment {
             System.out.println(weights[i]);
             System.out.println(i+1);
         }
+
+
+
         LineDataSet dataSet = new LineDataSet(entries, "Weightprogression KG in Y values");
 
 

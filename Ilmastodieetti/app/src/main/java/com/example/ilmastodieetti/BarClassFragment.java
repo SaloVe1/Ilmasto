@@ -18,7 +18,12 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
+
+
+//This is the fragment class that displays the Barchart
+
 public class BarClassFragment extends Fragment {
+
 
 
 userbank bank = userbank.getInstance();
@@ -41,6 +46,8 @@ private BarChart chart;
 
         View w = inflater.inflate(R.layout.fragment_bar_class,container,false);
 
+        //Finding the test value attributes by currently set username and currently set testnumber
+
         Dairy = tester.getOldTestResult(tester.getEmissionResultbyTake(current.getUsername(), current.getCurrentestnumber()), "Dairy");
         Meat = tester.getOldTestResult(tester.getEmissionResultbyTake(current.getUsername(), current.getCurrentestnumber()), "Meat");
         Plant = tester.getOldTestResult(tester.getEmissionResultbyTake(current.getUsername(), current.getCurrentestnumber()), "Plant");
@@ -49,6 +56,8 @@ private BarChart chart;
 
 
         chart = (BarChart) w.findViewById(R.id.Line);
+
+        //Setting up the y axis values of chart
 
         ArrayList<BarEntry>barEntries = new ArrayList<>();
         barEntries.add(new BarEntry(1,Float.parseFloat(Dairy)));
@@ -70,6 +79,8 @@ private BarChart chart;
         category.add("Total");
 
 
+        //Setting up the x axis values of chart
+
         BarData theData = new BarData(barDataSet);
         chart.setData(theData);
         XAxis xAxis = chart.getXAxis();
@@ -83,7 +94,6 @@ private BarChart chart;
         xAxis.setCenterAxisLabels(true);
         xAxis.setGranularity(1f);
         xAxis.setLabelCount(category.size());
-       // chart.setFitBars(true);
         chart.animateY(2000);
         chart.invalidate();
 

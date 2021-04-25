@@ -43,6 +43,10 @@ public class Login extends AppCompatActivity {
 
     }
 
+
+
+    //Checks password using passtest method in testbank singleton
+
     public void toApplication(View v){
 
 

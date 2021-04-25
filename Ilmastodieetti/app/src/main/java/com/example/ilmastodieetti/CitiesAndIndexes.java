@@ -1,5 +1,7 @@
 package com.example.ilmastodieetti;
 
+//Class is used to store areas and indexes from THL pages
+
 public class CitiesAndIndexes {
 
     private String city;

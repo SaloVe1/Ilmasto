@@ -30,6 +30,9 @@ import java.util.Scanner;
 public class testbank {
 
 
+/* TestBank class-object is used to handle most methods regarding tests and interaction with interfaces. Tesbank is also used to store and create objects of three kinds of tests.
+Questionaire object contains various attributes of a new test. OldTest object stores information of old testresults. Weighttrack object stores information of daily weight added in the daily updates  */
+
     private String name = "testbank";
     private final ArrayList<Questionaire_data> questionaire;
     private final ArrayList<OldTests> OldTestArraylist;
@@ -65,6 +68,8 @@ public class testbank {
 
     }
 
+    //Creating new questionaire object, adding the take number given by getQuestionaireTake method to the last object in the questionaire arraylist.
+
     public void newQuestionaire(Integer ta,String us, String d, boolean l, Integer b, Integer f, Integer p,
                                 Integer da, Integer c, Integer r, Integer e, Integer w, Integer Sp) {
 
@@ -76,11 +81,15 @@ public class testbank {
 
     }
 
+    //Creating new OldTest object
+
     public void addOldTests(String t, String d, String un, String r){
 
         OldTestArraylist.add(new OldTests(t,d,un,r));
 
     }
+
+    //Creating new weightTracker object, similar to method newQuestionaire
 
     public void addWeightTracker(String un, Integer we, String da, Integer ta){
 
@@ -90,6 +99,9 @@ public class testbank {
         weighttrack.get(weighttrack.size()-1).setTake(getWeightestTake(un));
 
     }
+
+
+    //Writing csv from weight tests, getting objects from weight track arraylist
 
     public void SaveWeightTest() {
 
@@ -134,6 +146,9 @@ public class testbank {
         }
     }
 
+
+    //Creating string array of all weights in weight test history, by username
+
     public String[] WeightProgression (String un){
 
         List<String> oList = new ArrayList<String>();
@@ -149,6 +164,8 @@ public class testbank {
 
     }
 
+    //Creating string array of all times corrresponding a weight-take, by username
+
     public String[] WeightProgressionTaketime (String un){
 
         List<String> oList = new ArrayList<String>();
@@ -163,6 +180,9 @@ public class testbank {
         return datearray;
 
     }
+
+    //Creating string array of all indexes corrresponding a weight-take, by username
+
     public String[] WeightProgressionTakeIndex (String un){
 
         List<String> oList = new ArrayList<String>();
@@ -179,9 +199,11 @@ public class testbank {
     }
 
 
-
+    //Creating weighttrack objects with existing csv
 
     public void FillWeightTrackerArray(){
+
+        //clearing weightrack arraylist
 
         weighttrack.clear();
 
@@ -193,6 +215,8 @@ public class testbank {
             BufferedReader br = new BufferedReader(new InputStreamReader(ins));
 
             while((s=br.readLine()) !=null){
+
+             //adding attributes to weighttrack object from from a string array
 
                 String[] values = s.split(",");
 
@@ -212,6 +236,11 @@ public class testbank {
 
     }
 
+
+    /*Calculates calorie consuption by avarage values for different sports kcal per hour
+    this method could/should be expanded with precise values determined by users weight
+     */
+
     public Float CalorieConsumtion(Integer rh, Integer rm, Integer ch, Integer cm, Integer wh, Integer wm, Integer gh, Integer gm, Integer jh, Integer jm){
 
     Float running = ((rh.floatValue()*60 + rm.floatValue())/60)*700;
@@ -225,6 +254,9 @@ public class testbank {
     return consumption;
 
     }
+
+
+    //Finding LATEST weight test take with known username
 
     public Integer getWeightestTake(String un) {
 
@@ -243,6 +275,8 @@ public class testbank {
         return count;
     }
 
+    //Simple integer array
+
     public Integer[] AbstractArray(Integer x, Integer y){
 
         Integer[] nums = new Integer[x];
@@ -254,9 +288,7 @@ public class testbank {
 
     }
 
-
-
-
+    //Gets the result string from old testresult JSON data. (Inputs are JSON as a String and the wanted value as String)
 
     public String getOldTestResult(String r, String s){
 
@@ -282,6 +314,8 @@ public class testbank {
 
     }
 
+    //Creates an array of takes by username
+
     public String[] takeArray(String un) {
 
         List<String> oList = new ArrayList<String>();
@@ -296,6 +330,11 @@ public class testbank {
         return takearray;
 
     }
+
+
+
+    //Creates an array of times by username
+
     public String[] taketimeArray(String un) {
 
         List<String> oList = new ArrayList<String>();
@@ -310,6 +349,8 @@ public class testbank {
         return datearray;
     }
 
+    //Finds the index of a certain element in spinner
+
     public int getSpinnerIndex(Spinner spinner, String s) {
 
         for (int i = 0; i < spinner.getCount(); i++) {
@@ -320,6 +361,9 @@ public class testbank {
         return 0;
 
     }
+
+
+    //Finds take by time and username
 
    public String getTakebyDate(String un, String ti){
 
@@ -335,6 +379,8 @@ public class testbank {
 
    }
 
+    //Finds weight test time by take number and username
+
     public String getWeightTestbyDate(String un, String ti){
 
         String take = "";
@@ -348,6 +394,8 @@ public class testbank {
         return take;
 
     }
+
+    //Finds weight test take by time and username
 
     public String getWeightTestbyTake(String un, String ti){
 
@@ -364,6 +412,7 @@ public class testbank {
     }
 
 
+    //Finds emissiontest date by username and take
 
     public String getDatebyTake(String un, String ti){
 
@@ -380,7 +429,7 @@ public class testbank {
     }
 
 
-
+    //Finds emissiontest take by username and date
 
     public String getEmissionResultbyTake(String un, String ta) {
 
@@ -397,7 +446,7 @@ public class testbank {
        return testresult;
    }
 
-
+    //Finds questionaire latest POSITION of a certain username
 
     public Integer getQuestionaireTake(String un) {
 
@@ -415,6 +464,9 @@ public class testbank {
         }
         return count;
     }
+
+
+    //This is used for printing all questionarie variables to console
 
     public void printAll(){
 
@@ -447,7 +499,7 @@ public class testbank {
     }
 
 
-
+    // Returns value as an integer
 
     public Integer SpendingEuros (String s) {
 
@@ -502,7 +554,7 @@ public class testbank {
 
 
 
-
+    // Returns value as an integer
 
     public Integer Change (String c) {
 
@@ -550,6 +602,9 @@ public class testbank {
 
         }
 
+
+    // Basic boolean
+
         public boolean yesNo(String n){
 
         if(n.equals("Yes")){return true;}
@@ -560,19 +615,9 @@ public class testbank {
 
         }
 
-        public int findTest(String username, Integer take){
 
-            for (int i = 0; i < questionaire.size(); i++) {
-
-                Questionaire_data data = questionaire.get(i);
-                if (data.getusername().equals(username)&& data.gettakes().equals(take)) {
-                    return i;
-                }
-            }
-            return -1;
-
-
-        }
+    /*Saves results of Emissiontest as csv this method checks if the csv exists, if it doesn't (In the frist open of the program)it writes
+      a new one. If it does it copies the existing material and writes some more and replaces the original this differs to my other methods */
 
     public void SaveResults(Integer t, String un, String result){
 
@@ -589,6 +634,7 @@ public class testbank {
 
             StringBuilder builder = new StringBuilder();
 
+            //read existing material and write a string with a stringbuilder
 
             while(scan.hasNextLine()){
             builder.append(scan.nextLine());
@@ -597,6 +643,8 @@ public class testbank {
             }
 
             ins.close();
+
+            //add the new test
 
             builder.append(t);
             builder.append(";");
@@ -613,6 +661,8 @@ public class testbank {
             ows.write(builder.toString());
             ows.close();
 
+            //console testing
+
             System.out.println(builder.toString());
 
 
@@ -621,6 +671,7 @@ public class testbank {
             Log.e("IOException", "Tyhjä");
             try{
 
+                //write on an empty
 
                 OutputStreamWriter ows = new OutputStreamWriter(context.openFileOutput("EmissionResults.csv", Context.MODE_PRIVATE));
 
@@ -657,6 +708,9 @@ public class testbank {
 
 
             }
+
+            //important! add objects to arraylist with FillOldTestArray method
+
             this.FillOldTestArray();
 
 
@@ -665,6 +719,9 @@ public class testbank {
 
     }
 
+
+
+    // This writes a completely new csv from the taken test answers from object
 
     public void SaveTest(){
 
@@ -731,6 +788,9 @@ public class testbank {
 
 
     }
+
+    // This one creates Questionaire objects from existing csv
+
     public void FillTestArray() {
 
 
@@ -745,6 +805,8 @@ public class testbank {
             while((s=br.readLine()) !=null){
 
                 String[] values = s.split(",");
+
+                //Iterating through list in an array form, adding objects attributes from array values
 
                 this.newQuestionaire(Integer.parseInt(values[0]), values[1], values[2], Boolean.parseBoolean(values[3]),
                         Integer.parseInt(values[4]), Integer.parseInt(values[5]), Integer.parseInt(values[6]), Integer.parseInt(values[7]),
@@ -767,6 +829,8 @@ public class testbank {
 
 
     }
+
+    // Similar to previous, now filling the old test arraylist from EmissionResults csv
 
     public void FillOldTestArray(){
 

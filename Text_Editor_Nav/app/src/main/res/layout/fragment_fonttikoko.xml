@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/fontsize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Font Size"
+        android:textSize="15sp" />
+    <SeekBar
+        android:layout_below="@id/fontsize"
+        android:id="@+id/seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="253dp"
+        android:layout_height="43dp"
+        android:max="20"
+        android:progress="10"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/kokoilmoitus"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar"
+        android:layout_centerHorizontal="true"
+        android:text="koko 10"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/muutakoko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kokoilmoitus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:onClick="setTextSize"
+        android:text="Muuta koko" />
+
+</RelativeLayout>

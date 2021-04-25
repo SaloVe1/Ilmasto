@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">bottle_machine</string>
+    <string-array name="Drinks">
+    <item>Pepsi Max medium</item>
+    <item>Pepsi Max large</item>
+    <item>Coca Cola Zero medium</item>
+    <item>Coca Cola Zero large</item>
+    <item>Fanta Zero medium</item>
+
+    </string-array>
+</resources>

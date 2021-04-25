@@ -1,5 +1,8 @@
 package com.example.ilmastodieetti;
 
+//This class is used to create questionaire objects used to store questionaire data for each questionaire
+
+
 public class Questionaire_data {
 
     private Integer takes;

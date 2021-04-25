@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/fontspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Font space"
+        android:textSize="15sp" />
+
+    <SeekBar
+        android:id="@+id/seekBar3"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="253dp"
+        android:layout_height="43dp"
+        android:layout_below="@id/fontspace"
+        android:layout_centerHorizontal="true"
+        android:max="1000"
+        android:min="-1000"
+        android:progress="0" />
+
+    <TextView
+        android:id="@+id/spaceilmoitus"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar3"
+        android:layout_centerHorizontal="true"
+        android:text="spacing 0"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/muutaspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spaceilmoitus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:onClick="setTextSpace"
+        android:text="Muuta space" />
+
+</RelativeLayout>

@@ -2,6 +2,9 @@ package com.example.ilmastodieetti;
 
 public class userprofile {
 
+/* User profile is used in  */
+
+
     private String name;
 private String username;
 private String password;

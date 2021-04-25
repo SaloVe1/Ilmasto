@@ -24,6 +24,10 @@ import java.util.List;
 
 public class userbank {
 
+ /* Userbank is utilized to create new userprofile objects and city(Maakunta) objects
+ Userbank contains and handles methods related to these objects and is used mainly in profile creation phase and login phase */
+
+
     private String name = "userbank";
     private final ArrayList<userprofile> users;
     private final ArrayList<CitiesAndIndexes> cities;
@@ -53,11 +57,15 @@ public class userbank {
 
     }
 
+    //Create new user: Name, username, password, age, height, gender, city
+
     public void newUser(String n, String un, String p, int a, int h, String g, String c) {
 
         users.add(new userprofile(n, un, p, a, h, g, c));
 
     }
+
+    //Create new city object. City, in this case Maakunta is taken from THL database. The corresponding ID is taken also from THL database
 
     public void newCity(String c, String i) {
 
@@ -67,6 +75,7 @@ public class userbank {
 
 
 
+    //Find profile index with username
 
     public int Findprofilebyname(String un) {
 
@@ -81,24 +90,22 @@ public class userbank {
 
     }
 
-    public String FindUserCity(String un) {
+    //Return true if profilename already exists
 
-        String City = "";
+    public boolean Findprofiletruefalse (String un) {
 
         for (int i = 0; i < users.size(); i++) {
 
             userprofile profile = users.get(i);
             if (profile.getUsername().equals(un)) {
-                City =profile.getCity();
+                return true;
             }
-
         }
-        return City;
+        return false;
 
     }
 
-
-
+    //Testing if the user input username and password correspond the password in user arraylist
 
     public String Passtest(String un, String p) {
 
@@ -118,6 +125,8 @@ public class userbank {
     }
 
 
+
+    //Saving the generic user data as csv
     public void SaveUsers(){
 
 
@@ -130,6 +139,8 @@ public class userbank {
             StringBuilder usersstring = new StringBuilder();
 
             for (int i = 0; i < this.users.size(); i++) {
+
+                //iterating the userarraylist, saving the different attributes with stringbuilder as string
 
                 userprofile profile = this.users.get(i);
 
@@ -175,6 +186,8 @@ public class userbank {
     public void FillUserArray() {
 
 
+        //filling the user arraylist with csv data
+
         users.clear();
 
         try{
@@ -186,6 +199,8 @@ public class userbank {
             while((s=br.readLine()) !=null){
 
                 String[] values = s.split(",");
+
+                //using array form to get specific attributes to each object
 
                 this.newUser(values[0], values[1],values[2], Integer.parseInt(values[3]),Integer.parseInt(values[4]),values [5],values[6]);
 
@@ -205,6 +220,11 @@ public class userbank {
 
         }
 
+
+    /*Puting regions to stringarray, to be used in a spinner.
+    This method first captures strings to an arraylist, then converts arraylist to string array.
+    Perhaps not the most straightforward */
+
     public String[] Cityarray() {
 
         List<String> oList = new ArrayList<String>();
@@ -217,12 +237,17 @@ public class userbank {
 
         return cityarray;
     }
+
+    //Simple string array of genders
+
     public String[] Genders(){
 
         String[] str = {"male", "female"};
 
         return str;
     }
+
+    //Putting indexes in a string array. Same as CityArray.
 
     public String FindIndexByCity(String c){
 
@@ -239,10 +264,13 @@ public class userbank {
 
 
 
+    // This method uses THL data to create City objects with corresponding Id numbers.
 
     public void FillCityArray(){
 
         String resultString = "";
+
+        //executing http call
 
         try {
             URL url = new URL("https://www.sotkanet.fi/rest/1.1/regions");
@@ -261,6 +289,8 @@ public class userbank {
 
             resultString = sb.toString();
 
+            //finding JSONobject "id", and object within an object "title" called "fi"
+
             JSONArray jsonArray = new JSONArray(resultString);
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jobject = jsonArray.getJSONObject(i);
@@ -270,8 +300,6 @@ public class userbank {
                     JSONObject townfi = jobject.getJSONObject("title");
 
                     this.newCity(townfi.getString("fi"), String.valueOf(jobject.getInt("id")));
-
-
 
 
                 }
@@ -296,9 +324,18 @@ public class userbank {
         }
 
     }
+
+
+
+
+    //calculating the probability of smoking with using age and gender as parameters
+
     public String SmokingPropability(String un){
 
         String resultString = "";
+
+        /* Originally functions purpose was to use all parameters, but since in the case of this indicator
+        THL data has only parameters of gender and age, so parameter region is useless in case of this indicator*/
 
         String year = "2019";
         String gender = users.get(Findprofilebyname(un)).getGender();
@@ -306,6 +343,8 @@ public class userbank {
         String Id = FindIndexByCity(city);
         String Indicator = "";
         Integer age = users.get(Findprofilebyname(un)).getAge();
+
+        //Changing indicator with age group
 
         if(age>=75){
          Indicator = "4407";
@@ -324,6 +363,7 @@ public class userbank {
 
         if (!Indicator.equals("0")) {
 
+            //Executing search
             try {
                 URL url = new URL("https://www.sotkanet.fi/rest/1.1/json?indicator=" + Indicator + "&years=" + year + "&genders=" + gender);
 
@@ -342,6 +382,8 @@ public class userbank {
                 resultString = sb.toString();
 
                 System.out.println(resultString);
+
+                //returning the probability value as a string only one object, since only one value for the whole country
 
                 JSONArray jsonArray = new JSONArray(resultString);
                 for (int i = 0; i < jsonArray.length(); i++) {
